@@ -1,0 +1,317 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B35006281867FECC00CF8CE2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35006271867FECC00CF8CE2 /* Cocoa.framework */; };
+		B35006321867FECD00CF8CE2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B35006301867FECD00CF8CE2 /* InfoPlist.strings */; };
+		B35006341867FECD00CF8CE2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B35006331867FECD00CF8CE2 /* main.m */; };
+		B35006381867FECD00CF8CE2 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = B35006361867FECD00CF8CE2 /* Credits.rtf */; };
+		B350063B1867FECD00CF8CE2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B350063A1867FECD00CF8CE2 /* AppDelegate.m */; };
+		B350063E1867FECD00CF8CE2 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B350063C1867FECD00CF8CE2 /* MainMenu.xib */; };
+		B35006451867FEFB00CF8CE2 /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35006441867FEFB00CF8CE2 /* OpenCL.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B35006241867FECC00CF8CE2 /* EnemySearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EnemySearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B35006271867FECC00CF8CE2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		B350062A1867FECC00CF8CE2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		B350062B1867FECC00CF8CE2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		B350062C1867FECC00CF8CE2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B350062F1867FECD00CF8CE2 /* EnemySearch-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EnemySearch-Info.plist"; sourceTree = "<group>"; };
+		B35006311867FECD00CF8CE2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B35006331867FECD00CF8CE2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B35006351867FECD00CF8CE2 /* EnemySearch-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EnemySearch-Prefix.pch"; sourceTree = "<group>"; };
+		B35006371867FECD00CF8CE2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		B35006391867FECD00CF8CE2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B350063A1867FECD00CF8CE2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B350063D1867FECD00CF8CE2 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		B35006441867FEFB00CF8CE2 /* OpenCL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenCL.framework; path = System/Library/Frameworks/OpenCL.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B35006211867FECC00CF8CE2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B35006451867FEFB00CF8CE2 /* OpenCL.framework in Frameworks */,
+				B35006281867FECC00CF8CE2 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B350061B1867FECC00CF8CE2 = {
+			isa = PBXGroup;
+			children = (
+				B350062D1867FECC00CF8CE2 /* EnemySearch */,
+				B35006261867FECC00CF8CE2 /* Frameworks */,
+				B35006251867FECC00CF8CE2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B35006251867FECC00CF8CE2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B35006241867FECC00CF8CE2 /* EnemySearch.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B35006261867FECC00CF8CE2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B35006441867FEFB00CF8CE2 /* OpenCL.framework */,
+				B35006271867FECC00CF8CE2 /* Cocoa.framework */,
+				B35006291867FECC00CF8CE2 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B35006291867FECC00CF8CE2 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B350062A1867FECC00CF8CE2 /* AppKit.framework */,
+				B350062B1867FECC00CF8CE2 /* CoreData.framework */,
+				B350062C1867FECC00CF8CE2 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		B350062D1867FECC00CF8CE2 /* EnemySearch */ = {
+			isa = PBXGroup;
+			children = (
+				B35006391867FECD00CF8CE2 /* AppDelegate.h */,
+				B350063A1867FECD00CF8CE2 /* AppDelegate.m */,
+				B350063C1867FECD00CF8CE2 /* MainMenu.xib */,
+				B350062E1867FECC00CF8CE2 /* Supporting Files */,
+			);
+			path = EnemySearch;
+			sourceTree = "<group>";
+		};
+		B350062E1867FECC00CF8CE2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B350062F1867FECD00CF8CE2 /* EnemySearch-Info.plist */,
+				B35006301867FECD00CF8CE2 /* InfoPlist.strings */,
+				B35006331867FECD00CF8CE2 /* main.m */,
+				B35006351867FECD00CF8CE2 /* EnemySearch-Prefix.pch */,
+				B35006361867FECD00CF8CE2 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B35006231867FECC00CF8CE2 /* EnemySearch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B35006411867FECD00CF8CE2 /* Build configuration list for PBXNativeTarget "EnemySearch" */;
+			buildPhases = (
+				B35006201867FECC00CF8CE2 /* Sources */,
+				B35006211867FECC00CF8CE2 /* Frameworks */,
+				B35006221867FECC00CF8CE2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EnemySearch;
+			productName = EnemySearch;
+			productReference = B35006241867FECC00CF8CE2 /* EnemySearch.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B350061C1867FECC00CF8CE2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Fumiyasu Takaura";
+			};
+			buildConfigurationList = B350061F1867FECC00CF8CE2 /* Build configuration list for PBXProject "EnemySearch" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = B350061B1867FECC00CF8CE2;
+			productRefGroup = B35006251867FECC00CF8CE2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B35006231867FECC00CF8CE2 /* EnemySearch */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B35006221867FECC00CF8CE2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B35006321867FECD00CF8CE2 /* InfoPlist.strings in Resources */,
+				B35006381867FECD00CF8CE2 /* Credits.rtf in Resources */,
+				B350063E1867FECD00CF8CE2 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B35006201867FECC00CF8CE2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B35006341867FECD00CF8CE2 /* main.m in Sources */,
+				B350063B1867FECD00CF8CE2 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B35006301867FECD00CF8CE2 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B35006311867FECD00CF8CE2 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		B35006361867FECD00CF8CE2 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B35006371867FECD00CF8CE2 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		B350063C1867FECD00CF8CE2 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B350063D1867FECD00CF8CE2 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B350063F1867FECD00CF8CE2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /opt/local/include;
+				LIBRARY_SEARCH_PATHS = /opt/local/lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		B35006401867FECD00CF8CE2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /opt/local/include;
+				LIBRARY_SEARCH_PATHS = /opt/local/lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		B35006421867FECD00CF8CE2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "EnemySearch/EnemySearch-Prefix.pch";
+				INFOPLIST_FILE = "EnemySearch/EnemySearch-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		B35006431867FECD00CF8CE2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "EnemySearch/EnemySearch-Prefix.pch";
+				INFOPLIST_FILE = "EnemySearch/EnemySearch-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B350061F1867FECC00CF8CE2 /* Build configuration list for PBXProject "EnemySearch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B350063F1867FECD00CF8CE2 /* Debug */,
+				B35006401867FECD00CF8CE2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B35006411867FECD00CF8CE2 /* Build configuration list for PBXNativeTarget "EnemySearch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B35006421867FECD00CF8CE2 /* Debug */,
+				B35006431867FECD00CF8CE2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B350061C1867FECC00CF8CE2 /* Project object */;
+}
