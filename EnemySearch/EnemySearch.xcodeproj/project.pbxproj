@@ -14,6 +14,7 @@
 		B350063B1867FECD00CF8CE2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B350063A1867FECD00CF8CE2 /* AppDelegate.m */; };
 		B350063E1867FECD00CF8CE2 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B350063C1867FECD00CF8CE2 /* MainMenu.xib */; };
 		B35006451867FEFB00CF8CE2 /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35006441867FEFB00CF8CE2 /* OpenCL.framework */; };
+		B35006491868039700CF8CE2 /* Test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B35006471868039700CF8CE2 /* Test.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,8 @@
 		B350063A1867FECD00CF8CE2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B350063D1867FECD00CF8CE2 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		B35006441867FEFB00CF8CE2 /* OpenCL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenCL.framework; path = System/Library/Frameworks/OpenCL.framework; sourceTree = SDKROOT; };
+		B35006471868039700CF8CE2 /* Test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Test.cpp; sourceTree = "<group>"; };
+		B35006481868039700CF8CE2 /* Test.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Test.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +89,7 @@
 		B350062D1867FECC00CF8CE2 /* EnemySearch */ = {
 			isa = PBXGroup;
 			children = (
+				B35006461868038600CF8CE2 /* src */,
 				B35006391867FECD00CF8CE2 /* AppDelegate.h */,
 				B350063A1867FECD00CF8CE2 /* AppDelegate.m */,
 				B350063C1867FECD00CF8CE2 /* MainMenu.xib */,
@@ -105,6 +109,15 @@
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
+		};
+		B35006461868038600CF8CE2 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				B35006471868039700CF8CE2 /* Test.cpp */,
+				B35006481868039700CF8CE2 /* Test.hpp */,
+			);
+			path = src;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -172,6 +185,7 @@
 			files = (
 				B35006341867FECD00CF8CE2 /* main.m in Sources */,
 				B350063B1867FECD00CF8CE2 /* AppDelegate.m in Sources */,
+				B35006491868039700CF8CE2 /* Test.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
