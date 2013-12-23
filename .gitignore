@@ -1,4 +1,4 @@
-# Compiled Object files
+1;2c1;2c# Compiled Object files
 *.slo
 *.lo
 *.o
@@ -37,4 +37,12 @@ project.xcworkspace/*
 xcuserdata
 profile
 *.moved-aside
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+**/*.xcodeproj/*
+!**/*.xcodeproj/project.pbxproj
+!*.xcodeproj/default.*
+!**/*.xcodeproj/default.*
+*.xcworkspace/*
+!*.xcworkspace/contents.xcworkspacedata
 
