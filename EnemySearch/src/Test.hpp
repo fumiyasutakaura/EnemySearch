@@ -9,6 +9,15 @@
 #ifndef __EnemySearch__Test__
 #define __EnemySearch__Test__
 
-#include <iostream>
+#include <boost/shared_ptr.hpp>
+
+class Test {
+public:
+    static boost::shared_ptr<Test> Create();
+    virtual void run() = 0;
+    
+protected:
+    explicit Test() {}
+};
 
 #endif /* defined(__EnemySearch__Test__) */
