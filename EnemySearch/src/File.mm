@@ -1,4 +1,5 @@
 #include "File.hpp"
+#include <iostream>
 
 std::string GetFilePath(std::string file_name)
 {
@@ -9,6 +10,7 @@ std::string GetFilePath(std::string file_name)
     
     if (![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
         // show error message
+        std::cout << "Not found." << std::endl;
         return "";
     }
 	

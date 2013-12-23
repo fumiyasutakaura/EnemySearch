@@ -15,6 +15,7 @@ class Test {
 public:
     static boost::shared_ptr<Test> Create();
     virtual void run() = 0;
+    virtual void showResult() = 0;
     
 protected:
     explicit Test() {}
