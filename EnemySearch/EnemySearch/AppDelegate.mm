@@ -21,24 +21,24 @@
     boost::shared_ptr<Test> test = Test::Create();
     test->run();
     test->showResult();
-    test->run();
-    test->showResult();
-    test->run();
-    test->showResult();
-    test->run();
-    test->showResult();
-    test->run();
-    test->showResult();
-    test->run();
-    test->showResult();
-    test->run();
-    test->showResult();
-    test->run();
-    test->showResult();
-    test->run();
-    test->showResult();
-    test->run();
-    test->showResult();
+//    test->run();
+//    test->showResult();
+//    test->run();
+//    test->showResult();
+//    test->run();
+//    test->showResult();
+//    test->run();
+//    test->showResult();
+//    test->run();
+//    test->showResult();
+//    test->run();
+//    test->showResult();
+//    test->run();
+//    test->showResult();
+//    test->run();
+//    test->showResult();
+//    test->run();
+//    test->showResult();
 }
 
 @end

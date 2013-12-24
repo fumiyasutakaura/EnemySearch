@@ -111,8 +111,8 @@ void TestImpl::init() {
     }
     
     {
-        memObj0 = clCreateBuffer(context, CL_MEM_READ_WRITE, sizeof(float)*bufferSize, NULL, &ret);
-        memObj1 = clCreateBuffer(context, CL_MEM_READ_WRITE, sizeof(float)*bufferSize, NULL, &ret);
+        memObj0 = clCreateBuffer(context, CL_MEM_READ_ONLY, sizeof(float)*bufferSize, NULL, &ret);
+        memObj1 = clCreateBuffer(context, CL_MEM_READ_ONLY, sizeof(float)*bufferSize, NULL, &ret);
         memObjResult = clCreateBuffer(context, CL_MEM_READ_WRITE, sizeof(float)*bufferSize, NULL, &ret);
     }
     
@@ -134,7 +134,10 @@ void TestImpl::run() {
     ret = clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&memObj0);
     ret = clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&memObj1);
     ret = clSetKernelArg(kernel, 2, sizeof(cl_mem), (void *)&memObjResult);
-    ret = clEnqueueTask(commandQueue, kernel, 0, NULL,NULL);
+//    ret = clEnqueueTask(commandQueue, kernel, 0, NULL,NULL);
+    size_t global_work_size[3] = {(size_t)bufferSize, 0, 0};
+    size_t local_work_size[3]  = {1, 0, 0};
+    ret = clEnqueueNDRangeKernel(commandQueue, kernel, 1, NULL, global_work_size, local_work_size, 0, NULL, NULL);
 }
 
 void TestImpl::showResult() {
