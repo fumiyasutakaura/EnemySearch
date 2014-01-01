@@ -1,7 +1,15 @@
 __kernel void vec_add (__global const float *a,
                        __global const float *b,
-                       __global       float *c)
+                       __global       float *ret,
+                       __global const int *screenWidth,
+                       __global const int *colorPerPixel
+                       )
 {
-	int gid = get_global_id(0);
-	c[gid] = a[gid] + b[gid];
+    const int gid = get_global_id(0);
+    const int pixelX = gid % ((*screenWidth)*(*colorPerPixel));
+    const int pixelY = gid / ((*screenWidth)*(*colorPerPixel));
+	const int pixelID = pixelX + pixelY * ((*screenWidth)*(*colorPerPixel));
+    
+	//ret[pixelID] = a[pixelID] + b[pixelID];
+    ret[pixelID] = (cos(pixelX*1.0f)*0.5+0.5)*255;
 }

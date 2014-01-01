@@ -38,7 +38,7 @@
 		B35006481868039700CF8CE2 /* Test.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Test.hpp; sourceTree = "<group>"; };
 		B350065F1868079100CF8CE2 /* File.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = File.hpp; sourceTree = "<group>"; };
 		B35006601868079100CF8CE2 /* File.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = File.mm; sourceTree = "<group>"; };
-		B35006631868089700CF8CE2 /* blend.kernel */ = {isa = PBXFileReference; explicitFileType = sourcecode.opencl; fileEncoding = 4; path = blend.kernel; sourceTree = "<group>"; };
+		B35006631868089700CF8CE2 /* blend.kernel */ = {isa = PBXFileReference; explicitFileType = sourcecode.c; fileEncoding = 4; path = blend.kernel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
