@@ -11,12 +11,14 @@
 		B35006321867FECD00CF8CE2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B35006301867FECD00CF8CE2 /* InfoPlist.strings */; };
 		B35006341867FECD00CF8CE2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B35006331867FECD00CF8CE2 /* main.m */; };
 		B35006381867FECD00CF8CE2 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = B35006361867FECD00CF8CE2 /* Credits.rtf */; };
-		B350063B1867FECD00CF8CE2 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = B350063A1867FECD00CF8CE2 /* AppDelegate.mm */; };
+		B350063B1867FECD00CF8CE2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B350063A1867FECD00CF8CE2 /* AppDelegate.m */; };
 		B350063E1867FECD00CF8CE2 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B350063C1867FECD00CF8CE2 /* MainMenu.xib */; };
 		B35006451867FEFB00CF8CE2 /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35006441867FEFB00CF8CE2 /* OpenCL.framework */; };
 		B35006491868039700CF8CE2 /* Test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B35006471868039700CF8CE2 /* Test.cpp */; };
 		B35006611868079200CF8CE2 /* File.mm in Sources */ = {isa = PBXBuildFile; fileRef = B35006601868079100CF8CE2 /* File.mm */; };
 		B35006641868089700CF8CE2 /* blend.kernel in Resources */ = {isa = PBXBuildFile; fileRef = B35006631868089700CF8CE2 /* blend.kernel */; };
+		B37A2E5318745972002E20AA /* TestViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = B37A2E5118745972002E20AA /* TestViewController.mm */; };
+		B37A2E5418745972002E20AA /* TestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B37A2E5218745972002E20AA /* TestViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +33,7 @@
 		B35006351867FECD00CF8CE2 /* EnemySearch-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EnemySearch-Prefix.pch"; sourceTree = "<group>"; };
 		B35006371867FECD00CF8CE2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		B35006391867FECD00CF8CE2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		B350063A1867FECD00CF8CE2 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
+		B350063A1867FECD00CF8CE2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B350063D1867FECD00CF8CE2 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		B35006441867FEFB00CF8CE2 /* OpenCL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenCL.framework; path = System/Library/Frameworks/OpenCL.framework; sourceTree = SDKROOT; };
 		B35006471868039700CF8CE2 /* Test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Test.cpp; sourceTree = "<group>"; };
@@ -39,6 +41,9 @@
 		B350065F1868079100CF8CE2 /* File.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = File.hpp; sourceTree = "<group>"; };
 		B35006601868079100CF8CE2 /* File.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = File.mm; sourceTree = "<group>"; };
 		B35006631868089700CF8CE2 /* blend.kernel */ = {isa = PBXFileReference; explicitFileType = sourcecode.c; fileEncoding = 4; path = blend.kernel; sourceTree = "<group>"; };
+		B37A2E5018745972002E20AA /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		B37A2E5118745972002E20AA /* TestViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TestViewController.mm; sourceTree = "<group>"; };
+		B37A2E5218745972002E20AA /* TestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +102,11 @@
 				B35006621868088500CF8CE2 /* kernel */,
 				B35006461868038600CF8CE2 /* src */,
 				B35006391867FECD00CF8CE2 /* AppDelegate.h */,
-				B350063A1867FECD00CF8CE2 /* AppDelegate.mm */,
+				B350063A1867FECD00CF8CE2 /* AppDelegate.m */,
 				B350063C1867FECD00CF8CE2 /* MainMenu.xib */,
+				B37A2E5018745972002E20AA /* TestViewController.h */,
+				B37A2E5118745972002E20AA /* TestViewController.mm */,
+				B37A2E5218745972002E20AA /* TestViewController.xib */,
 				B350062E1867FECC00CF8CE2 /* Supporting Files */,
 			);
 			path = EnemySearch;
@@ -190,6 +198,7 @@
 				B35006321867FECD00CF8CE2 /* InfoPlist.strings in Resources */,
 				B35006381867FECD00CF8CE2 /* Credits.rtf in Resources */,
 				B350063E1867FECD00CF8CE2 /* MainMenu.xib in Resources */,
+				B37A2E5418745972002E20AA /* TestViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,9 +210,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B35006341867FECD00CF8CE2 /* main.m in Sources */,
-				B350063B1867FECD00CF8CE2 /* AppDelegate.mm in Sources */,
+				B350063B1867FECD00CF8CE2 /* AppDelegate.m in Sources */,
 				B35006491868039700CF8CE2 /* Test.cpp in Sources */,
 				B35006611868079200CF8CE2 /* File.mm in Sources */,
+				B37A2E5318745972002E20AA /* TestViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

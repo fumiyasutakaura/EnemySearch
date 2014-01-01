@@ -13,7 +13,7 @@
 #include <OpenCL/OpenCL.h>
 
 static const int screenWidth = 480;
-static const int screenHeight = 320;
+static const int screenHeight = 272;
 static const int colorPerPixel = 4;
 
 class TestImpl : public Test {

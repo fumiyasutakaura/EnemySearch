@@ -7,9 +7,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "TestViewController.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
-
+{
+    TestViewController *tVC;
+}
 @property (assign) IBOutlet NSWindow *window;
 
 @end
