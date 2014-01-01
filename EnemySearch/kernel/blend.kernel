@@ -1,8 +1,8 @@
-__kernel void vec_add (__global const float *a,
-                       __global const float *b,
-                       __global       float *ret,
+__kernel void vec_add (__global const unsigned char *a,
+                       __global const unsigned char *b,
+                       __global       unsigned char *ret,
                        __global const int *screenWidth,
-                       __global const int *colorPerPixel
+                       __global const unsigned char *colorPerPixel
                        )
 {
     const int gid = get_global_id(0);
@@ -11,5 +11,9 @@ __kernel void vec_add (__global const float *a,
 	const int pixelID = pixelX + pixelY * ((*screenWidth)*(*colorPerPixel));
     
 	//ret[pixelID] = a[pixelID] + b[pixelID];
-    ret[pixelID] = (cos(pixelX*1.0f)*0.5+0.5)*255;
+    ret[pixelID] = a[pixelID];
+    if( pixelID % (*colorPerPixel) == 2 ) {  //bgra
+        ret[pixelID] = 255;
+    }
+    
 }

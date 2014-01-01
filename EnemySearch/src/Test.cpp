@@ -12,9 +12,9 @@
 #include <fstream>
 #include <OpenCL/OpenCL.h>
 
-static const int screenWidth = 480;
-static const int screenHeight = 272;
-static const int colorPerPixel = 4;
+static const int screenWidth = 640;
+static const int screenHeight = 480;
+static const unsigned char colorPerPixel = 4;
 
 class TestImpl : public Test {
 public:
@@ -25,7 +25,8 @@ public:
     
     // > virtual method ------------------
     void run();
-    void showResult();
+    void setParam( unsigned char* pixel );
+    void getResult( unsigned char* retPixel );
     // < virtual method ------------------
     
 private:
@@ -121,36 +122,33 @@ void TestImpl::init() {
     }
     
     {
-        memObj0 = clCreateBuffer(context, CL_MEM_READ_ONLY, sizeof(float)*bufferSize, NULL, &ret);
-        memObj1 = clCreateBuffer(context, CL_MEM_READ_ONLY, sizeof(float)*bufferSize, NULL, &ret);
-        memObjResult = clCreateBuffer(context, CL_MEM_READ_WRITE, sizeof(float)*bufferSize, NULL, &ret);
+        memObj0 = clCreateBuffer(context, CL_MEM_READ_ONLY, sizeof(unsigned char)*bufferSize, NULL, &ret);
+        memObj1 = clCreateBuffer(context, CL_MEM_READ_ONLY, sizeof(unsigned char)*bufferSize, NULL, &ret);
+        memObjResult = clCreateBuffer(context, CL_MEM_READ_WRITE, sizeof(unsigned char)*bufferSize, NULL, &ret);
         memScreenWidth = clCreateBuffer(context, CL_MEM_READ_WRITE, sizeof(int), NULL, &ret);
         memColorPerPixel = clCreateBuffer(context, CL_MEM_READ_WRITE, sizeof(int), NULL, &ret);
     }
     
-    {   
-        float val0[bufferSize];
-        float val1[bufferSize];
-        for( int i=0; i<bufferSize; ++i ) {
-            val0[i] = i;
-            val1[i] = i;
-        }
-        clEnqueueWriteBuffer(commandQueue, memObj0, CL_TRUE, 0, bufferSize * sizeof(float), val0, 0, NULL, NULL);
-        clEnqueueWriteBuffer(commandQueue, memObj1, CL_TRUE, 0, bufferSize * sizeof(float), val1, 0, NULL, NULL);
+    { 
         
         clEnqueueWriteBuffer(commandQueue, memScreenWidth, CL_TRUE, 0, sizeof(int), &screenWidth, 0, NULL, NULL);
-        clEnqueueWriteBuffer(commandQueue, memColorPerPixel, CL_TRUE, 0, sizeof(int), &colorPerPixel, 0, NULL, NULL);
+        clEnqueueWriteBuffer(commandQueue, memColorPerPixel, CL_TRUE, 0, sizeof(unsigned char), &colorPerPixel, 0, NULL, NULL);
     }
     
 }
 
-void TestImpl::run() {
+void TestImpl::setParam( unsigned char* pixel ) {
     cl_int ret;
+    clEnqueueWriteBuffer(commandQueue, memObj0, CL_TRUE, 0, sizeof(unsigned char)*bufferSize, pixel, 0, NULL, NULL);
     ret = clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&memObj0);
     ret = clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&memObj1);
     ret = clSetKernelArg(kernel, 2, sizeof(cl_mem), (void *)&memObjResult);
     ret = clSetKernelArg(kernel, 3, sizeof(cl_mem), (void *)&memScreenWidth);
     ret = clSetKernelArg(kernel, 4, sizeof(cl_mem), (void *)&memColorPerPixel);
+}
+
+void TestImpl::run() {
+    cl_int ret;
     
 //    ret = clEnqueueTask(commandQueue, kernel, 0, NULL,NULL);
     size_t global_work_size[3] = {(size_t)bufferSize, 1, 1};
@@ -158,11 +156,8 @@ void TestImpl::run() {
     ret = clEnqueueNDRangeKernel(commandQueue, kernel, 1, NULL, global_work_size, local_work_size, 0, NULL, NULL);
 }
 
-void TestImpl::showResult() {
+void TestImpl::getResult( unsigned char* retPixel ) {
     cl_int ret;
-    float result[bufferSize];
-    ret = clEnqueueReadBuffer(commandQueue, memObjResult, CL_TRUE, 0, bufferSize * sizeof(float), result, 0, NULL, NULL);
-    for( unsigned int i=0; i<bufferSize; ++i ) {
-        std::cout << result[i] << std::endl;
-    }
+    ret = clEnqueueReadBuffer(commandQueue, memObjResult, CL_TRUE, 0, bufferSize * sizeof(unsigned char), retPixel, 0, NULL, NULL);
+    
 }

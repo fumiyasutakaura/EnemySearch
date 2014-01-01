@@ -9,7 +9,7 @@
 #import "TestViewController.h"
 
 #include "Test.hpp"
-
+static boost::shared_ptr<Test> test;
 
 @interface TestViewController ()
 
@@ -22,6 +22,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Initialization code here.
+        test = Test::Create();
     }
     
     return self;
@@ -29,9 +30,6 @@
 
 -(void)dealloc {
     [self.session removeOutput:self.dataOutput];
-    [self.dataOutput release];
-    [self.session stopRunning];
-    [self.session release];
     [imageView removeFromSuperview];
     [imageView release];
     [super dealloc];
@@ -49,11 +47,11 @@
     AVCaptureDeviceInput* deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:device error:NULL];
     
     NSDictionary* settings = @{(id)kCVPixelBufferPixelFormatTypeKey:[NSNumber numberWithInt:kCVPixelFormatType_32BGRA]};
-    self.dataOutput = [[AVCaptureVideoDataOutput alloc] init];
+    self.dataOutput = [[[AVCaptureVideoDataOutput alloc] init] autorelease];
     self.dataOutput.videoSettings = settings;
     [self.dataOutput setSampleBufferDelegate:self queue:dispatch_get_main_queue()];
     
-    self.session = [[AVCaptureSession alloc] init];
+    self.session = [[[AVCaptureSession alloc] init] autorelease];
     [self.session addInput:deviceInput];
     [self.session addOutput:self.dataOutput];
     self.session.sessionPreset = AVCaptureSessionPresetHigh;
@@ -81,69 +79,50 @@
     [self.session commitConfiguration];
 
     [self.session startRunning];
+    
 }
 
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection
 {
-    imageView.image = [self imageFromSampleBufferRef:sampleBuffer];
-}
-
-- (NSImage *)imageFromSampleBufferRef:(CMSampleBufferRef)sampleBuffer
-{
     CVImageBufferRef buffer;
     buffer = CMSampleBufferGetImageBuffer(sampleBuffer);
     
-    CVPixelBufferLockBaseAddress(buffer, 0);
+    CVPixelBufferLockBaseAddress(buffer, 0); {
+        
+        unsigned char* base;
+        size_t width, height, bytesPerRow;
+        base = (unsigned char*)CVPixelBufferGetBaseAddress(buffer);
+        width = CVPixelBufferGetWidth(buffer);
+        height = CVPixelBufferGetHeight(buffer);
+        bytesPerRow = CVPixelBufferGetBytesPerRow(buffer);
+        
+        CGColorSpaceRef colorSpace;
+        CGContextRef cgContext;
+        colorSpace = CGColorSpaceCreateDeviceRGB();
+        cgContext = CGBitmapContextCreate(base, width, height, 8, bytesPerRow, colorSpace,
+                                          kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst);
+        { // base -> kernel
+            test->setParam(base);
+        }
+        { // run kernel
+            test->run();
+        }
+        { // kernel -> base
+            test->getResult(base);
+        }
+        CGColorSpaceRelease(colorSpace);
+        
+        CGImageRef  cgImage;
+        cgImage = CGBitmapContextCreateImage(cgContext);
+        NSImage* img = [[NSImage alloc] initWithCGImage:cgImage size:CGSizeMake(width, height)];
+        [imageView setImage:img];
+        [img release];
+        CGImageRelease(cgImage);
+        CGContextRelease(cgContext);
+        
+    } CVPixelBufferUnlockBaseAddress(buffer, 0);
     
-    void* base;
-    size_t width, height, bytesPerRow;
-    base = CVPixelBufferGetBaseAddress(buffer);
-    width = CVPixelBufferGetWidth(buffer);
-    height = CVPixelBufferGetHeight(buffer);
-    bytesPerRow = CVPixelBufferGetBytesPerRow(buffer);
-    
-    CGColorSpaceRef colorSpace;
-    CGContextRef    cgContext;
-    colorSpace = CGColorSpaceCreateDeviceRGB();
-    cgContext = CGBitmapContextCreate(
-                                      base, width, height, 8, bytesPerRow, colorSpace,
-                                      kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst);
-    CGColorSpaceRelease(colorSpace);
-    
-    CGImageRef  cgImage;
-    NSImage*    image;
-    cgImage = CGBitmapContextCreateImage(cgContext);
-    image = [[[NSImage alloc] initWithCGImage:cgImage size:CGSizeMake(width, height)] autorelease];
-    CGImageRelease(cgImage);
-    CGContextRelease(cgContext);
-    
-    CVPixelBufferUnlockBaseAddress(buffer, 0);
-    return image;
 }
 
--(void)test {
-    boost::shared_ptr<Test> test = Test::Create();
-    test->run();
-    test->showResult();
-    //    test->run();
-    //    test->showResult();
-    //    test->run();
-    //    test->showResult();
-    //    test->run();
-    //    test->showResult();
-    //    test->run();
-    //    test->showResult();
-    //    test->run();
-    //    test->showResult();
-    //    test->run();
-    //    test->showResult();
-    //    test->run();
-    //    test->showResult();
-    //    test->run();
-    //    test->showResult();
-    //    test->run();
-    //    test->showResult();
-
-}
 
 @end

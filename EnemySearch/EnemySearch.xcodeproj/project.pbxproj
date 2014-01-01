@@ -74,10 +74,6 @@
 		B350061B1867FECC00CF8CE2 = {
 			isa = PBXGroup;
 			children = (
-				B37A2E5B18745C10002E20AA /* CoreVideo.framework */,
-				B37A2E5918745C0A002E20AA /* CoreMedia.framework */,
-				B37A2E5718745C03002E20AA /* QuartzCore.framework */,
-				B37A2E5518745BFD002E20AA /* AVFoundation.framework */,
 				B350062D1867FECC00CF8CE2 /* EnemySearch */,
 				B35006261867FECC00CF8CE2 /* Frameworks */,
 				B35006251867FECC00CF8CE2 /* Products */,
@@ -95,6 +91,10 @@
 		B35006261867FECC00CF8CE2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B37A2E5B18745C10002E20AA /* CoreVideo.framework */,
+				B37A2E5918745C0A002E20AA /* CoreMedia.framework */,
+				B37A2E5718745C03002E20AA /* QuartzCore.framework */,
+				B37A2E5518745BFD002E20AA /* AVFoundation.framework */,
 				B35006441867FEFB00CF8CE2 /* OpenCL.framework */,
 				B35006271867FECC00CF8CE2 /* Cocoa.framework */,
 				B35006291867FECC00CF8CE2 /* Other Frameworks */,
@@ -117,12 +117,12 @@
 			children = (
 				B35006621868088500CF8CE2 /* kernel */,
 				B35006461868038600CF8CE2 /* src */,
-				B35006391867FECD00CF8CE2 /* AppDelegate.h */,
-				B350063A1867FECD00CF8CE2 /* AppDelegate.m */,
-				B350063C1867FECD00CF8CE2 /* MainMenu.xib */,
 				B37A2E5018745972002E20AA /* TestViewController.h */,
 				B37A2E5118745972002E20AA /* TestViewController.mm */,
 				B37A2E5218745972002E20AA /* TestViewController.xib */,
+				B35006391867FECD00CF8CE2 /* AppDelegate.h */,
+				B350063A1867FECD00CF8CE2 /* AppDelegate.m */,
+				B350063C1867FECD00CF8CE2 /* MainMenu.xib */,
 				B350062E1867FECC00CF8CE2 /* Supporting Files */,
 			);
 			path = EnemySearch;
