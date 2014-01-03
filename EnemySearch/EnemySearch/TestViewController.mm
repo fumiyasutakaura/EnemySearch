@@ -102,7 +102,7 @@ static boost::shared_ptr<Test> test;
         cgContext = CGBitmapContextCreate(base, width, height, 8, bytesPerRow, colorSpace,
                                           kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst);
         { // base -> kernel
-            test->setParam(base);
+            test->pushData(base, (int)(width*height*4));
         }
         { // run kernel
             test->run();

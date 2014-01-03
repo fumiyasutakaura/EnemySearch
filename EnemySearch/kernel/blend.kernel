@@ -1,8 +1,10 @@
-__kernel void vec_add (__global const unsigned char *a,
-                       __global const unsigned char *b,
+__kernel void blendPic(
                        __global       unsigned char *ret,
                        __global const int *screenWidth,
-                       __global const unsigned char *colorPerPixel
+                       __global const unsigned char *colorPerPixel,
+                       
+                       __global const unsigned char *a,
+                       __global const unsigned char *b
                        )
 {
     const int gid = get_global_id(0);
@@ -10,10 +12,9 @@ __kernel void vec_add (__global const unsigned char *a,
     const int pixelY = gid / ((*screenWidth)*(*colorPerPixel));
 	const int pixelID = pixelX + pixelY * ((*screenWidth)*(*colorPerPixel));
     
-	//ret[pixelID] = a[pixelID] + b[pixelID];
-    ret[pixelID] = a[pixelID];
-    if( pixelID % (*colorPerPixel) == 2 ) {  //bgra
-        ret[pixelID] = 255;
-    }
+    const float denominator = 2.0f;
+    ret[pixelID] = 0;
+    ret[pixelID] += a[pixelID]/denominator;
+    ret[pixelID] += b[pixelID]/denominator;
     
 }

@@ -10,11 +10,15 @@
 #include "File.hpp"
 #include <boost/shared_array.hpp>
 #include <fstream>
+#include <deque>
 #include <OpenCL/OpenCL.h>
 
 static const int screenWidth = 640;
 static const int screenHeight = 480;
 static const unsigned char colorPerPixel = 4;
+
+static const int maxDequeSize = 10;
+
 
 class TestImpl : public Test {
 public:
@@ -25,7 +29,7 @@ public:
     
     // > virtual method ------------------
     void run();
-    void setParam( unsigned char* pixel );
+    void pushData( const unsigned char* pixel, const int num_of_pixels );
     void getResult( unsigned char* retPixel );
     // < virtual method ------------------
     
@@ -41,9 +45,12 @@ private:
     cl_mem memScreenWidth;
     cl_mem memColorPerPixel;
     const int bufferSize;
+    
+    const int max_deque_size;
+    std::deque<boost::shared_array<unsigned char> > dataDeq;
 };
 
-TestImpl::TestImpl() : bufferSize(screenWidth*screenHeight*colorPerPixel) {
+TestImpl::TestImpl() : bufferSize(screenWidth*screenHeight*colorPerPixel), max_deque_size(maxDequeSize) {
     
 }
 TestImpl::~TestImpl() {
@@ -118,7 +125,7 @@ void TestImpl::init() {
     }
     
     {
-        kernel = clCreateKernel(program, "vec_add", &ret);
+        kernel = clCreateKernel(program, "blendPic", &ret);
     }
     
     {
@@ -137,23 +144,58 @@ void TestImpl::init() {
     
 }
 
-void TestImpl::setParam( unsigned char* pixel ) {
-    cl_int ret;
-    clEnqueueWriteBuffer(commandQueue, memObj0, CL_TRUE, 0, sizeof(unsigned char)*bufferSize, pixel, 0, NULL, NULL);
-    ret = clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&memObj0);
-    ret = clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&memObj1);
-    ret = clSetKernelArg(kernel, 2, sizeof(cl_mem), (void *)&memObjResult);
-    ret = clSetKernelArg(kernel, 3, sizeof(cl_mem), (void *)&memScreenWidth);
-    ret = clSetKernelArg(kernel, 4, sizeof(cl_mem), (void *)&memColorPerPixel);
+void TestImpl::pushData( const unsigned char* pixel, const int num_of_pixels ) {
+    static boost::shared_array<unsigned char> temp( new unsigned char[num_of_pixels]() );
+    memcpy(temp.get(), pixel, sizeof(unsigned char)*num_of_pixels);
+    dataDeq.push_back(temp);
+    while ( dataDeq.size() < max_deque_size ) {
+        boost::shared_array<unsigned char> temp2( new unsigned char[num_of_pixels]() );
+        memcpy(temp2.get(), pixel, sizeof(unsigned char)*num_of_pixels);
+        dataDeq.push_back(temp2);
+    }
+    while( dataDeq.size() > max_deque_size ) {
+        dataDeq.pop_front();
+    }
 }
 
 void TestImpl::run() {
     cl_int ret;
     
-//    ret = clEnqueueTask(commandQueue, kernel, 0, NULL,NULL);
+    
     size_t global_work_size[3] = {(size_t)bufferSize, 1, 1};
     size_t local_work_size[3]  = {1, 1, 1};
-    ret = clEnqueueNDRangeKernel(commandQueue, kernel, 1, NULL, global_work_size, local_work_size, 0, NULL, NULL);
+    static boost::shared_array<unsigned char> retPixel( new unsigned char[bufferSize]() );
+    cl_event events[10];
+    {
+        ret = clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&memObjResult);
+        ret = clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&memScreenWidth);
+        ret = clSetKernelArg(kernel, 2, sizeof(cl_mem), (void *)&memColorPerPixel);
+        
+        clEnqueueWriteBuffer(commandQueue, memObj0, CL_TRUE, 0, sizeof(unsigned char)*bufferSize, dataDeq[0].get(), 0, NULL, NULL);
+        clEnqueueWriteBuffer(commandQueue, memObj1, CL_TRUE, 0, sizeof(unsigned char)*bufferSize, dataDeq[1].get(), 0, NULL, NULL);
+        ret = clSetKernelArg(kernel, 3, sizeof(cl_mem), (void *)&memObj0);
+        ret = clSetKernelArg(kernel, 4, sizeof(cl_mem), (void *)&memObj1);
+        
+        ret = clEnqueueNDRangeKernel(commandQueue, kernel, 1, NULL, global_work_size, local_work_size, 0, NULL, NULL);
+        
+//        ret = clEnqueueReadBuffer(commandQueue, memObjResult, CL_TRUE, 0, bufferSize * sizeof(unsigned char), retPixel.get(), 0, NULL, NULL);
+        clEnqueueCopyBuffer(commandQueue, memObjResult, memObj1, 0, 0, bufferSize * sizeof(unsigned char), 0, NULL, &events[0]);
+    }
+//    for( int i=2; i<3; ++i ) {
+//        ret = clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&memObjResult);
+//        ret = clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&memScreenWidth);
+//        ret = clSetKernelArg(kernel, 2, sizeof(cl_mem), (void *)&memColorPerPixel);
+//        
+//        clEnqueueWriteBuffer(commandQueue, memObj0, CL_TRUE, 0, sizeof(unsigned char)*bufferSize, dataDeq[i].get(), 0, NULL, NULL);
+//        ret = clSetKernelArg(kernel, 3, sizeof(cl_mem), (void *)&memObj0);
+//        ret = clSetKernelArg(kernel, 4, sizeof(cl_mem), (void *)&memObj1);
+//        
+//        ret = clEnqueueNDRangeKernel(commandQueue, kernel, 1, NULL, global_work_size, local_work_size, 0, NULL, NULL);
+//        
+//        //        ret = clEnqueueReadBuffer(commandQueue, memObjResult, CL_TRUE, 0, bufferSize * sizeof(unsigned char), retPixel.get(), 0, NULL, NULL);
+//        clEnqueueCopyBuffer(commandQueue, memObjResult, memObj1, 0, 0, bufferSize * sizeof(unsigned char), 0, &events[0], NULL);
+//    }
+    
 }
 
 void TestImpl::getResult( unsigned char* retPixel ) {
